@@ -106,7 +106,7 @@ function ice_cloud() {
 	};
 
 	//获取public数据
-	this.serPublic = function(i) {
+	this.serPublic = function() {
 		link = url + "manage/public/serpublic"
 		return cloud_ajax();
 	};
