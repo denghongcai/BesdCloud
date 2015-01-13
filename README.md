@@ -161,7 +161,7 @@ false 错误
 
 我们允许最多增加四个字符串，不需要增加的值建议用文本的“null”填充。
 
-如ice_cloud.storeAdd("ICECSS很漂亮","null","null","null";
+如ice_cloud.storeAdd("ICECSS很漂亮","null","null","null");
 
 （7）查找数据
 
@@ -208,6 +208,11 @@ num=5，根据value1、value2、value3、value4来查找该用户的数据
  `ice_cloud.delPublic(id);` 
 
 
+####注意事项####
+
+有可能上面定义的方法执行后会有一两秒的延迟才能获取到result，这时我们建议您对获取result的方法进行延时1-3秒。
+
+
 ####JS SDK使用示例####
 
 场景：云记事本
@@ -222,14 +227,16 @@ num=5，根据value1、value2、value3、value4来查找该用户的数据
 
 `ice_cloud.register("username","password","email");`
 
-注册完之后便可以通过login登录
+然后用getResult()获取结果进行判断。
+
+注册完之后便可以通过login登录，同理执行完后用getResult获取结果
 
 `ice_cloud.login("username","password");`
 
-登录后用storeSearch将之前用户的记事都找出来然后渲染到页面上
+登录后用storeSearch获取数据，再用getResult将之前用户的记事都找出来然后渲染到页面上
 
 `ice_cloud.storeSearch(1,"null","null","null","null");`
 
-如果用户想增加一个新的记事，那就可以用storeAdd来增加
+如果用户想增加一个新的记事，那就可以用storeAdd来增加，可以用getResult知道是否增加成功
 
 `ice_cloud.storeAdd("一月十三的日记","今天去买了菜、跟亲爱的看了场电影","分类-日记","20150113");`
